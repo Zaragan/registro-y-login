@@ -20,6 +20,6 @@ if(isset($_GET['mensaje'])&&($_GET['mensaje']=='inicia')){$log_error = "Registra
 <body>
     <div id="menu" class="wrapper"><?php menu(); ?></div>
     <p><?php echo $log_error ?></p>
-    
+    <div class="tabla"><table><tr><th>usuarios</th><th>password</th></tr><?php displaydb() ?></table></div>
 </body>
 </html>
