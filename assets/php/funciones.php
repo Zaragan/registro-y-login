@@ -1,5 +1,20 @@
 <?php
 session_start();
+include('assets/php/db.php');
+
+function displaydb(){
+    $dbCall = new Database();
+    $users = $dbCall->setQuery("SELECT email,password FROM subastausers");
+    if ($users->num_rows > 0) {
+        $mun = false;
+        while ($fila = $users->fetch_assoc()) {
+            echo '<tr>';
+            echo '<td>' . $fila['email'] . '</td>';
+            echo '<td>' . $fila['password'] . '</td>';
+            echo '</tr>';
+        }
+    }
+}
 function menu(){
     if (!isset($_SESSION['level'])) {
         $menu = '<ul>
