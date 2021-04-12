@@ -7,10 +7,16 @@ $hashpass = password_hash($password, PASSWORD_ARGON2ID);
 $dbCall = new Database();
 $users = $dbCall->setQuery("SELECT * FROM subastausers");
 
-if ($fila = mysqli_fetch_array($users)) {
-    if ($fila['email']==$usuario) {
-	    header('Location: ../../registro.php?mensaje=en_uso');
-    }else {
+if ($users->num_rows > 0) {
+    $mun = false;
+    while ($fila = $users->fetch_assoc()) {
+        if ($fila['email']==$usuario) {
+            $mun = true;
+            header('Location: ../../registro.php?mensaje=en_uso');
+            break;
+        }       
+    }
+    if ($mun == false) {
         $dbCall->setQuery("INSERT INTO `subastausers`(email, password) VALUES ('$usuario','$hashpass')");
         header('Location: ../../index.php?mensaje=inicia');
     }
