@@ -5,7 +5,7 @@ $password = strip_tags(addslashes($_POST['r_password']));
 
 $hashpass = password_hash($password, PASSWORD_ARGON2ID); 
 $dbCall = new Database();
-$users = $dbCall->setQuery("SELECT * FROM subastausers");
+$users = $dbCall->setQuery("SELECT * FROM registroylogin");
 
 if ($users->num_rows > 0) {
     $mun = false;
@@ -17,7 +17,7 @@ if ($users->num_rows > 0) {
         }       
     }
     if ($mun == false) {
-        $dbCall->setQuery("INSERT INTO `subastausers`(email, password) VALUES ('$usuario','$hashpass')");
+        $dbCall->setQuery("INSERT INTO `registroylogin`(email, password) VALUES ('$usuario','$hashpass')");
         header('Location: ../../index.php?mensaje=inicia');
     }
 }

@@ -4,7 +4,7 @@ $usuario = strip_tags(addslashes($_POST['p_username']));
 $password = strip_tags(addslashes($_POST['p_password']));
 
 $dbCall = new Database();
-$userlist = $dbCall->setQuery("SELECT * FROM subastausers WHERE email=$usuario");
+$userlist = $dbCall->setQuery("SELECT * FROM registroylogin WHERE email=$usuario");
 
 $fila = mysqli_fetch_array($userlist);
 $passok = password_verify($password, $fila['password']);

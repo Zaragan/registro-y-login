@@ -5,6 +5,7 @@ if(isset($_GET['mensaje'])&&($_GET['mensaje']=='mensaje_error')){$log_error = "S
 if(isset($_GET['mensaje'])&&($_GET['mensaje']=='gracias')){$log_error = "Gracias por utilizar nuestra web";}
 if(isset($_GET['mensaje'])&&($_GET['mensaje']=='sin_permiso')){$log_error = "No tienes permiso para acceder a esta URL";}
 if(isset($_GET['mensaje'])&&($_GET['mensaje']=='inicia')){$log_error = "Registrado. Identificate ahora.";}
+
 ?>
 
 <!DOCTYPE html>

@@ -4,9 +4,8 @@ include('assets/php/db.php');
 
 function displaydb(){
     $dbCall = new Database();
-    $users = $dbCall->setQuery("SELECT email,password FROM subastausers");
+    $users = $dbCall->setQuery("SELECT email,password FROM registroylogin");
     if ($users->num_rows > 0) {
-        $mun = false;
         while ($fila = $users->fetch_assoc()) {
             echo '<tr>';
             echo '<td>' . $fila['email'] . '</td>';
@@ -19,7 +18,6 @@ function menu(){
     if (!isset($_SESSION['level'])) {
         $menu = '<ul>
             <li><a href="index.php">Inicio</a></li>
-            <li><a href="#">Lista de subastas</a></li>
             </ul>
             <form action="assets/php/identificar.php" method="POST" class="usuario">
                 <label for="usuario">Usuario</label>
@@ -33,8 +31,6 @@ function menu(){
         // ZONA ADMIN
         $menu = '<ul>
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Lista de subastas</a></li>
-            <li><a href="#">Subastar algo</a></li>
             <li class="ultimo"><a href="assets/php/desconectar.php">Desconectar</a></li>
             </ul>
             <p class=usuario>Bienvenido: '.$_SESSION['email'].'!</p>';
@@ -42,8 +38,6 @@ function menu(){
         // ZONA USUARIO
         $menu = '<ul>
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Lista de subastas</a></li>
-            <li><a href="#">Subastar algo</a></li>
             <li class="ultimo"><a href="assets/php/desconectar.php">Desconectar</a></li>
             </ul>
             <p class=usuario>Bienvenido: '.$_SESSION['email'].'!</p>';
